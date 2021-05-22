@@ -1,0 +1,30 @@
+.auth-container {
+    display: flex;
+    padding: 20px 40px 0px 140px;
+}
+
+.auth-info-title {
+    font-size: 40px;
+    line-height: 50px;
+    letter-spacing: -0.005em;
+    color: #263238;
+}
+
+.auth-info-subtitle {
+    margin-top: 15px;
+    margin-bottom: -40px;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: -0.005em;
+    color: #9E9E9E;
+}
+
+.auth-image {
+    width: 410px;
+    height: 410px;
+    margin: 0;
+}
+
+.auth-content {
+    margin-left: 100px;
+}
