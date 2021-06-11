@@ -37,6 +37,7 @@ const Form = () => {
                     setValue('price', response.data.price);
                     setValue('description', response.data.description);
                     setValue('imgUrl', response.data.imgUrl);
+                    setValue('categories', response.data.categories)
                 })
         }
     }, [productId, isEditing, setValue]);
@@ -73,11 +74,12 @@ const Form = () => {
                     <div className="col-6">
                         <div className="margin-botton-30">
                             <input
-                                {...register('name', {
+                                ref={register({
                                     required: "Campo obrigatório",
                                     minLength: { value: 5, message: "O campo deve ter no mínimo 5 caracteres!" },
                                     maxLength: { value: 60, message: "O campo deve ter no mínimo 60 caracteres!" }
                                 })}
+                                name="name"
                                 type="text"
                                 className="form-control input-base"
                                 placeholder="Nome do produto"
@@ -99,14 +101,20 @@ const Form = () => {
                                 getOptionLabel={(option: Category) => option.name}
                                 getOptionValue={(option: Category) => String(option.id)}
                                 classNamePrefix="categories-select"
-                                placeholder="Categoria"
+                                placeholder="Categorias"
                                 isMulti
                             />
+                            {errors.categories && (
+                                <div className="invalid-feedback d-block">
+                                    Campo obrigatório
+                                </div>
+                            )}
                         </div>
                         <div className="margin-botton-30">
                             <input
-                                {...register('price', { required: "Campo obrigatório" })}
                                 type="number"
+                                name="price"
+                                ref={register({ required: "Campo obrigatório" })}                                
                                 className="form-control input-base"
                                 placeholder="Preço"
                             />
@@ -118,8 +126,9 @@ const Form = () => {
                         </div>
                         <div className="margin-botton-30">
                             <input
-                                {...register('imgUrl', { required: "Campo obrigatório" })}
+                                ref={register({ required: "Campo obrigatório" })}
                                 type="text"
+                                name="imgUrl"
                                 className="form-control input-base"
                                 placeholder="imagem do produto"
                             />
@@ -132,8 +141,9 @@ const Form = () => {
                     </div>
                     <div className="col-6">
                         <textarea
-                            {...register('description', { required: "Campo obrigatório" })}
+                            ref={register({ required: "Campo obrigatório" })}
                             placeholder="Descrição"
+                            name="description"
                             className="form-control input-base"
                             cols={30}
                             rows={10}

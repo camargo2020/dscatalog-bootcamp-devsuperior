@@ -45,18 +45,19 @@ const Login = () => {
             )}
             <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="margin-botton-30">
-                    <input
-                        type="email"
-                        className={`form-control input-base ${errors.username ? 'is-invalid' : ''}`}
-                        placeholder="Email"
-                        {...register('username', { 
-                            required: "Campo obrigatório",
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "Email inválido"
-                            } 
-                        })}
-                    />
+                <input
+                    type="email"
+                    className={`form-control input-base ${errors.username ? 'is-invalid' : '' }`}
+                    placeholder="Email"
+                    name="username"
+                    ref={register({
+                    required: "Campo obrigatório",
+                    pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "Email inválido"
+                    }
+                    })}
+                />
                     {errors.username && (
                         <div className="invalid-feedback d-block">
                             {errors.username.message}
@@ -64,12 +65,13 @@ const Login = () => {
                     )}
                 </div>
                 <div className="margin-botton-30">
-                    <input
-                        type="password"
-                        className={`form-control input-base ${errors.password ? 'is-invalid' : ''}`}
-                        placeholder="Senha"
-                        {...register('password', { required: "Campo obrigatório"})}
-                    />
+                <input
+                    type="password"
+                    className={`form-control input-base ${errors.password ? 'is-invalid' : '' }`}
+                    placeholder="Senha"
+                    name="password"
+                    ref={register({ required: "Campo obrigatório" })} 
+                />
                     {errors.password && (
                         <div className="invalid-feedback d-block">
                             {errors.password.message}
