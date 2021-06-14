@@ -1,20 +1,13 @@
 import { CLIENT_ID, CLIENT_SECRET, getSessionData, logout } from './auth';
 import qs from 'qs';
-import axios,{ Method } from 'axios';
-
-type RequestParams = {
-    method?: Method;
-    url: string;
-    data?: object | string;
-    params?: object;
-    headers?: object;
-}
+import axios, { AxiosRequestConfig } from 'axios';
 
 type LoginData = {
     username: string;
     password: string;
 }
 
+//const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'https://camargo-dscatalog.herokuapp.com';
 const BASE_URL = 'http://localhost:8080';
 
 axios.interceptors.response.use(function (response) {
@@ -26,24 +19,21 @@ axios.interceptors.response.use(function (response) {
     return Promise.reject(error);
   });
 
-export const makeRequest = ({ method = 'GET', url, data, params, headers }:RequestParams) => {
+export const makeRequest = (params: AxiosRequestConfig) => {
     return axios({
-        method,
-        url: `${BASE_URL}${url}`,
-        data,
-        params,
-        headers 
+        ...params, 
+        baseURL: BASE_URL
     });
 }
 
-export const makePrivateRequest = ({ method = 'GET', url, data, params }: RequestParams) => {
+export const makePrivateRequest = (params: AxiosRequestConfig) => {
     const sessionData = getSessionData();
 
     const headers = {
         'Authorization': `Bearer ${sessionData.access_token}`
     }
 
-    return makeRequest({ method, url, data, params, headers });
+    return makeRequest({ ...params, headers });
 
 }
 

@@ -29,7 +29,7 @@ const Form = () => {
     const [categories, setCategories] = useState<Category[]>([]);
     const isEditing = productId !== 'create';
     const formTitle = isEditing ? 'Editar produto' : 'Cadastrar produto'
-    
+
     useEffect(() => {
         if (isEditing) {
             makeRequest({ url: `/products/${productId}` })
@@ -58,7 +58,7 @@ const Form = () => {
             data
         })
             .then(() => {
-                toast.info('Produto cadastrado com sucesso!.')
+                toast.info('Produto salvo com sucesso!.')
                 history.push('/admin/products');
             })
             .catch(() => {
@@ -92,18 +92,19 @@ const Form = () => {
                             )}
                         </div>
                         <div className="margin-botton-30">
-                            <Controller 
+                            <Controller
                                 as={Select}
                                 defaultValue=""
                                 name="categories"
                                 rules={{ required: true }}
                                 control={control}
                                 isLoading={isLoadingCategories}
-                                options={categories} 
+                                options={categories}
                                 getOptionLabel={(option: Category) => option.name}
                                 getOptionValue={(option: Category) => String(option.id)}
                                 classNamePrefix="categories-select"
                                 placeholder="Categorias"
+                                inputId="categories"
                                 isMulti
                             />
                             {errors.categories && (
@@ -126,7 +127,7 @@ const Form = () => {
                                 type="text"
                                 name="imgUrl"
                                 className="form-control input-base"
-                                placeholder="imagem do produto"
+                                placeholder="Entre com a URL da imagem"
                             />
                             {errors.imgUrl && (
                                 <div className="invalid-feedback d-block">
