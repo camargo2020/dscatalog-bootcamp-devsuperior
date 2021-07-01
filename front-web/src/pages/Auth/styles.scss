@@ -2,8 +2,12 @@
     display: flex;
     padding: 20px 40px 0px 140px;
     justify-content: center;
-    background: url(~core/assets/images/auth-background.svg) no-repeat;
+    background: url(~core/assets/images/auth-background.svg) no-repeat bottom;
     background-size: 100%;
+}
+
+.auth-info {
+    margin-right: 100px;
 }
 
 .auth-info-title {
@@ -28,6 +32,20 @@
     margin: 0;
 }
 
-.auth-content {
-    margin-left: 100px;
+@media (max-width: 768px) {
+    .auth-info {
+        display: none;
+    }
+
+    .auth-content {
+        margin-right: 80px;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-container {
+        margin: 0px;
+        margin-left: 80px;
+        padding: 40px 0px 0px 0px;
+    }
 }

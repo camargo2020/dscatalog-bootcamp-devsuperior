@@ -1,8 +1,11 @@
+.default-button {
+    display: flex;
+}
+
 .btn-icon {
     height: 70px;
     width: 380px;
     border-radius: 10px 0px 0px 10px;
-    margin-top: 60px;
     text-transform: uppercase;
 }
 
@@ -11,9 +14,30 @@
     border-radius: 0px 10px 10px 0px;
     width: 70px;
     height: 70px;
-    margin-top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #FFF;
+}
+
+@media (max-width: 576px) {
+    .default-button {
+        max-width: 70vw;
+        height: 50px;
+        margin-bottom: 15px;
+    }
+
+    .default-button button h5 {
+        font-size: 1em;
+    }
+
+    .btn-icon {
+        height: 50px;
+        margin-top: 0px;
+    }
+
+    .btn-icon-content {
+        height: 50px;
+        margin-top: 0px;
+    }
 }

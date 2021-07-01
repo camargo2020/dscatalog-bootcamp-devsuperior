@@ -1,7 +1,6 @@
 .products-details-container {
-    margin-top: 35px;
-    margin-left: 40px;
-    margin-right: 40px;
+    margin: 40px 0px;
+    padding: 0px 40px;
 
     .product-price-container {
         margin-bottom: 30px;
@@ -9,12 +8,13 @@
 }
 
 .product-details {
-    padding: 30px 60px 30px 60px;
+    padding: 50px 60px 90px 60px;
 }
 
 .product-details-goback {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 .icon-global {
@@ -31,16 +31,21 @@
     text-transform: uppercase;
 }
 
+.product-details-info {
+    display: flex;
+    flex-direction: row;
+}
+
 .product-details-card {
+    width: 100%;
     border: 1px solid #E1E1E1;
     border-radius: 20px;
     padding: 38px 29px;
-    margin-top: 20px;
 }
 
 .product-details-image {
-    width: 200px;
-    height: 200px;
+    width: 353px;
+    height: 353px;
 }
 
 .product-description-title {
@@ -49,7 +54,6 @@
     letter-spacing: -0.015em;
     color: #9E9E9E;
     margin-bottom: 25px;
-    margin-top: 5px;
 }
 
 .product-description-text {
@@ -67,5 +71,77 @@
     margin-top: 20px;
 }
 .product-details .product-price {
-    font-size: 38px;
+    font-size: 48px;
+}
+
+@media (max-width: 768px) {
+    .product-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .product-details-info {
+        flex-direction: column;
+    }
+
+    .product-details-card {
+        width: 530px;
+        margin: 0px auto;
+    }
+
+    .product-details {
+        flex-direction: column;
+    }
+
+    .product-info-fields {
+        border: 0px;
+        padding: 0px 10px;
+        margin-bottom: 40px;
+        width: 530px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .product-description-text {
+        width: 460px;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .products-details-container {
+        margin-top: 5px;
+        padding: 10px;
+    }
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .product-details-card {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .product-details-image {
+        width: 200px;
+        height: 200px;
+    }
+
+    .product-info-fields {
+        width: 100%;        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-description-text {
+        width: 90%;
+    }
 }
